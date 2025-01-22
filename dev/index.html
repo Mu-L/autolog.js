@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4507845_4ys40xqhy9u.css">
-  <style>
-    .btn{
+  <head>
+    <meta charset="UTF-8" />
+    <title>autolog dev</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4507845_4ys40xqhy9u.css" />
+    <style>
+      .btn {
         display: inline-block;
         line-height: 1;
         white-space: nowrap;
@@ -15,7 +15,7 @@
         box-sizing: border-box;
         outline: none;
         margin: 0;
-        transition: .1s;
+        transition: 0.1s;
         font-weight: 500;
         user-select: none;
         padding: 12px 20px;
@@ -24,31 +24,32 @@
         color: #409eff;
         background: #ecf5ff;
         border: 1px solid #b3d8ff;
-    }
-    .btn:hover{
+      }
+      .btn:hover {
         background: #409eff;
         border-color: #409eff;
         color: #fff;
-    }
-    .demo{
+      }
+      .demo {
         display: flex;
         justify-content: center;
         margin: 200px;
-    }
-    .demo .btn{
+      }
+      .demo .btn {
         margin: 0 20px;
-    }
-  </style>
-</head>
-<body>
-<div class="demo">
-  <button class="btn log" data-type="warn">warn</button>
-  <button class="btn log" data-type="error">error</button>
-  <button class="btn log" data-type="info">info</button>
-  <button class="btn log" data-type="success">success</button>
-  <button class="btn log" data-type="icon-warning">iconfont</button>
-  <button class="btn log" data-type="customSvg">customSvg</button>
-  <button class="btn log handleClose" data-type="handleClose">handleClose</button>
-</div>
-</body>
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo">
+      <button class="btn log" data-type="warn">warn</button>
+      <button class="btn log" data-type="error">error</button>
+      <button class="btn log" data-type="info">info</button>
+      <button class="btn log" data-type="success">success</button>
+      <button class="btn log" data-type="icon-warning">iconfont</button>
+      <button class="btn log" data-type="customSvg">customSvg</button>
+      <button class="btn log handleClose" data-type="handleClose">handleClose</button>
+    </div>
+  </body>
 </html>
+<script src="./autolog.iife.js"></script>

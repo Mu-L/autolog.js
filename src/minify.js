@@ -1,5 +1,5 @@
-const fs = require('fs');
-const CleanCSS = require('clean-css');
+import fs from 'fs';
+import CleanCSS from 'clean-css';
 
 const css = fs.readFileSync('./src/autolog.css', 'utf8');
 const minified = new CleanCSS().minify(css).styles;
