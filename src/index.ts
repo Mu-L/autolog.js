@@ -55,7 +55,7 @@ const autolog = {
         el = null;
       }, time);
     } else {
-      el?.addEventListener('click', () => {
+      el?.querySelector(".icon")?.addEventListener('click', () => {
         el!.classList.add("hide");
         setTimeout(() => {
           mainEl.removeChild(el!);
@@ -64,13 +64,13 @@ const autolog = {
       });
     }
   },
-  create<T extends Record<string, string>>(options: AutologOptions<T>) {
-    customIcons(options.svgIcons);
-    return {
-      log: this.log.bind(this) as <U extends AutologLogType<T>>(text?: string, type?: U | number | boolean, time?: number | boolean, autoClose?: boolean) => void,
-    };
-  }
 };
+function create<T extends Record<string, string>>(options: AutologOptions<T>) {
+  customIcons(options.svgIcons);
+  return {
+    log: autolog.log.bind(autolog) as <U extends AutologLogType<T>>(text?: string, type?: U | number | boolean, time?: number | boolean, autoClose?: boolean) => void,
+  };
+}
 // 定义颜色对象的类型
 type MtoastElementColor = {
   warn: string;
@@ -109,11 +109,12 @@ function getMainElement() {
 
 function escapeHtml(unsafe: string) {
   return unsafe
-      .replace(/&/g, "&amp;") // & -> &amp;
-      .replace(/</g, "&lt;")  // < -> &lt;
-      .replace(/>/g, "&gt;")  // > -> &gt;
-      .replace(/"/g, "&quot;") // " -> &quot;
-      .replace(/'/g, "&#039;") // ' -> &#039;
-      .replace(/\n/g, "</br>");
+    .replace(/&/g, "&amp;") // & -> &amp;
+    .replace(/</g, "&lt;")  // < -> &lt;
+    .replace(/>/g, "&gt;")  // > -> &gt;
+    .replace(/"/g, "&quot;") // " -> &quot;
+    .replace(/'/g, "&#039;") // ' -> &#039;
+    .replace(/\n/g, "</br>");
 }
 export default autolog;
+export { create as createAutolog };

@@ -27,7 +27,6 @@ export default defineConfig({
       file: './dist/autolog.cjs.js',
       esModule: true,
       name: 'autoLog',
-      exports: 'default'
     },
     {
       format: 'umd',

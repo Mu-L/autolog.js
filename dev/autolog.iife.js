@@ -4743,49 +4743,47 @@ const svgIcons = {
 	x: `<svg class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><path d="M256 810.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733334l512-512c17.066667-17.066667 42.666667-17.066667 59.733334 0s17.066667 42.666667 0 59.733334l-512 512c-8.533333 8.533333-17.066667 12.8-29.866667 12.8zM768 810.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-512-512c-17.066667-17.066667-17.066667-42.666667 0-59.733334s42.666667-17.066667 59.733334 0l512 512c17.066667 17.066667 17.066667 42.666667 0 59.733334-8.533333 8.533333-17.066667 12.8-29.866667 12.8z" fill="#000000"/></svg>`,
 	"": ""
 };
-const autolog$1 = {
-	log(text = "", type = "", time = 2500, autoClose = true) {
-		if (typeof type === "number") {
-			autoClose = time;
-			time = type;
-			type = "";
-		} else if (typeof type === "boolean") {
-			autoClose = type;
-			type = "";
-			time = 2500;
-		} else if (typeof time === "boolean") {
-			autoClose = time;
-			time = 2500;
-		}
-		time += 900;
-		const mainEl = getMainElement();
-		let el = document.createElement("span");
-		el.className = `autolog-${type.toString()}`;
-		if (type.toString().startsWith("icon-")) el.innerHTML = `<span class="iconfont ${type.toString()}"></span> <span>${escapeHtml(text)}</span>`;
-else el.innerHTML = svgIcons[type] + `<span>${escapeHtml(text)}</span>`;
-		if (!autoClose) el.innerHTML += getX(type);
-		mainEl.appendChild(el);
-		if (autoClose) {
-			setTimeout(() => {
-				el.classList.add("hide");
-			}, time - 500);
-			setTimeout(() => {
-				mainEl.removeChild(el);
-				el = null;
-			}, time);
-		} else el?.addEventListener("click", () => {
-			el.classList.add("hide");
-			setTimeout(() => {
-				mainEl.removeChild(el);
-				el = null;
-			}, 500);
-		});
-	},
-	create(options) {
-		customIcons(options.svgIcons);
-		return { log: this.log.bind(this) };
+const autolog = { log(text = "", type = "", time = 2500, autoClose = true) {
+	if (typeof type === "number") {
+		autoClose = time;
+		time = type;
+		type = "";
+	} else if (typeof type === "boolean") {
+		autoClose = type;
+		type = "";
+		time = 2500;
+	} else if (typeof time === "boolean") {
+		autoClose = time;
+		time = 2500;
 	}
-};
+	time += 900;
+	const mainEl = getMainElement();
+	let el = document.createElement("span");
+	el.className = `autolog-${type.toString()}`;
+	if (type.toString().startsWith("icon-")) el.innerHTML = `<span class="iconfont ${type.toString()}"></span> <span>${escapeHtml(text)}</span>`;
+else el.innerHTML = svgIcons[type] + `<span>${escapeHtml(text)}</span>`;
+	if (!autoClose) el.innerHTML += getX(type);
+	mainEl.appendChild(el);
+	if (autoClose) {
+		setTimeout(() => {
+			el.classList.add("hide");
+		}, time - 500);
+		setTimeout(() => {
+			mainEl.removeChild(el);
+			el = null;
+		}, time);
+	} else el?.querySelector(".icon")?.addEventListener("click", () => {
+		el.classList.add("hide");
+		setTimeout(() => {
+			mainEl.removeChild(el);
+			el = null;
+		}, 500);
+	});
+} };
+function create(options) {
+	customIcons(options.svgIcons);
+	return { log: autolog.log.bind(autolog) };
+}
 const mtoastElementColor = {
 	warn: "#e29505",
 	error: "#d93025",
@@ -4815,16 +4813,17 @@ function getMainElement() {
 function escapeHtml(unsafe) {
 	return unsafe.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/\n/g, "</br>");
 }
-var src_default = autolog$1;
+var src_default = autolog;
 
 //#endregion
 //#region dev/index.ts
 var import_jquery = __toESM(require_jquery(), 1);
-const autolog = src_default.create({ svgIcons: { customSvg: `<svg t="1713405208589" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1582" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><path d="M853.333333 138.666667H170.666667c-40.533333 0-74.666667 34.133333-74.666667 74.666666v512c0 40.533333 34.133333 74.666667 74.666667 74.666667h151.466666V917.333333c0 12.8 8.533333 25.6 19.2 29.866667 4.266667 2.133333 8.533333 2.133333 12.8 2.133333 8.533333 0 17.066667-4.266667 23.466667-10.666666l136.533333-138.666667H853.333333c40.533333 0 74.666667-34.133333 74.666667-74.666667V213.333333c0-40.533333-34.133333-74.666667-74.666667-74.666666z m10.666667 586.666666c0 6.4-4.266667 10.666667-10.666667 10.666667H501.333333c-8.533333 0-17.066667 4.266667-23.466666 10.666667l-89.6 93.866666V768c0-17.066667-14.933333-32-32-32H170.666667c-6.4 0-10.666667-4.266667-10.666667-10.666667V213.333333c0-6.4 4.266667-10.666667 10.666667-10.666666h682.666666c6.4 0 10.666667 4.266667 10.666667 10.666666v512z" fill="#0e6eb8" p-id="1583"></path><path d="M512 490.666667H298.666667c-17.066667 0-32 14.933333-32 32S281.6 554.666667 298.666667 554.666667h213.333333c17.066667 0 32-14.933333 32-32S529.066667 490.666667 512 490.666667zM672 341.333333H298.666667c-17.066667 0-32 14.933333-32 32S281.6 405.333333 298.666667 405.333333h373.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z" fill="#0e6eb8" p-id="1584"></path></svg>` } });
+const alog = create({ svgIcons: { customSvg: `<svg t="1713405208589" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1582" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16"><path d="M853.333333 138.666667H170.666667c-40.533333 0-74.666667 34.133333-74.666667 74.666666v512c0 40.533333 34.133333 74.666667 74.666667 74.666667h151.466666V917.333333c0 12.8 8.533333 25.6 19.2 29.866667 4.266667 2.133333 8.533333 2.133333 12.8 2.133333 8.533333 0 17.066667-4.266667 23.466667-10.666666l136.533333-138.666667H853.333333c40.533333 0 74.666667-34.133333 74.666667-74.666667V213.333333c0-40.533333-34.133333-74.666667-74.666667-74.666666z m10.666667 586.666666c0 6.4-4.266667 10.666667-10.666667 10.666667H501.333333c-8.533333 0-17.066667 4.266667-23.466666 10.666667l-89.6 93.866666V768c0-17.066667-14.933333-32-32-32H170.666667c-6.4 0-10.666667-4.266667-10.666667-10.666667V213.333333c0-6.4 4.266667-10.666667 10.666667-10.666666h682.666666c6.4 0 10.666667 4.266667 10.666667 10.666666v512z" fill="#0e6eb8" p-id="1583"></path><path d="M512 490.666667H298.666667c-17.066667 0-32 14.933333-32 32S281.6 554.666667 298.666667 554.666667h213.333333c17.066667 0 32-14.933333 32-32S529.066667 490.666667 512 490.666667zM672 341.333333H298.666667c-17.066667 0-32 14.933333-32 32S281.6 405.333333 298.666667 405.333333h373.333333c17.066667 0 32-14.933333 32-32s-14.933333-32-32-32z" fill="#0e6eb8" p-id="1584"></path></svg>` } });
+src_default.log("Hello, autoLog!", "success", 5e3);
 (0, import_jquery.default)(".log").on("click", function() {
 	const type = (0, import_jquery.default)(this).data("type");
 	const handleClose = (0, import_jquery.default)(this).hasClass("handleClose");
-	autolog.log(type, !handleClose ? type : "icon-success", 1e3, !handleClose);
+	alog.log(type, !handleClose ? type : "icon-success", 1e3, !handleClose);
 });
 
 //#endregion
