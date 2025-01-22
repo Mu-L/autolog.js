@@ -42,3 +42,4 @@ lerna-debug.log*
 
 # test pack
 *.tgz
+./dev/*.js
