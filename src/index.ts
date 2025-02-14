@@ -55,7 +55,7 @@ const autolog = {
         el = null;
       }, time);
     } else {
-      el?.querySelector(".icon")?.addEventListener('click', () => {
+      el?.querySelector(".icon:last-child")?.addEventListener('click', () => {
         el!.classList.add("hide");
         setTimeout(() => {
           mainEl.removeChild(el!);
