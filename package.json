@@ -1,21 +1,21 @@
 {
-  "name": "autolog.js",
+  "name": "autotoast.js",
   "version": "3.0.1",
   "description": "轻量化的小弹窗",
-  "main": "./dist/autolog.cjs.js",
+  "main": "./dist/autotoast.cjs.js",
   "type": "module",
   "types": "./dist/types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/auto-plugin/autolog.js.git"
+    "url": "https://github.com/auto-plugin/autotoast.js.git"
   },
   "files": [
     "dist/*",
-    "autolog.svg",
+    "autotoast.svg",
     "LICENSE",
     "README.md"
   ],
-  "homepage": "https://auto-plugin.github.io/index/autolog.js/",
+  "homepage": "https://auto-plugin.github.io/index/autotoast.js/",
   "scripts": {
     "cleanCSS": "node ./src/minify.js",
     "dev": "rolldown -c ./rolldown.config.dev.ts --watch",
@@ -24,7 +24,7 @@
   },
   "keywords": [
     "toast",
-    "autolog.js"
+    "autotoast.js"
   ],
   "devDependencies": {
     "@types/jquery": "^3.5.30",

@@ -12,8 +12,8 @@ export default defineConfig({
   output: [
     {
       format: 'iife',
-      file: './dev/autolog.iife.js',
-      name: 'AutoLog',
+      file: './dev/autotoast.iife.js',
+      name: 'autotoast',
     },
   ],
   plugins: [

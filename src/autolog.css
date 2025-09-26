@@ -1,4 +1,4 @@
-#autolog {
+#autotoast {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,7 +14,7 @@
   transition: 0.2s;
 }
 
-#autolog > span {
+#autotoast > span {
   pointer-events: auto;
   width: max-content;
   animation: fadein 0.4s;
@@ -35,11 +35,11 @@
   background-color: #fafafa;
 }
 
-#autolog > span > span {
+#autotoast > span > span {
   max-width: 50vw;
 }
 
-#autolog span.hide {
+#autotoast span.hide {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -48,27 +48,27 @@
   margin: 0;
 }
 
-#autolog > .autolog-warn {
+#autotoast > .autotoast-warn {
   background-color: #fffaec;
   color: #e29505;
 }
 
-#autolog > .autolog-error {
+#autotoast > .autotoast-error {
   background-color: #fde7e7;
   color: #d93025;
 }
 
-#autolog > .autolog-info {
+#autotoast > .autotoast-info {
   background-color: #e6f7ff;
   color: #0e6eb8;
 }
 
-#autolog > .autolog-success {
+#autotoast > .autotoast-success {
   background-color: #e9f7e7;
   color: #1a9e2c;
 }
 
-#autolog > .autolog- {
+#autotoast > .autotoast- {
   background-color: #fafafa;
   color: #333;
 }

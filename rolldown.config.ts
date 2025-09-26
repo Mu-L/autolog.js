@@ -18,29 +18,29 @@ export default defineConfig({
   output: [
     {
       format: 'esm',
-      file: './dist/autolog.esm.js',
-      name: 'autoLog',
+      file: './dist/autotoast.esm.js',
+      name: 'autotoast',
       esModule: true
     },
     {
       format: 'cjs',
-      file: './dist/autolog.cjs.js',
+      file: './dist/autotoast.cjs.js',
       esModule: true,
-      name: 'autoLog',
+      name: 'autotoast',
     },
     {
       format: 'umd',
-      file: './dist/autolog.umd.js',
-      name: 'autoLog',
+      file: './dist/autotoast.umd.js',
+      name: 'autotoast',
     },
     {
       format: 'iife',
-      file: './dist/autolog.iife.js',
-      name: 'autoLog',
+      file: './dist/autotoast.iife.js',
+      name: 'autotoast',
     },
     {
       format: 'iife',
-      file: './dist/autolog.min.js',
+      file: './dist/autotoast.min.js',
       plugins: [terser() as Plugin],
     },
   ],

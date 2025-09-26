@@ -1,11 +1,11 @@
 <p align="center">
   <a target="_blank" href="#">
-  <img alt="autolog" src="https://raw.githubusercontent.com/Larryzhu-dev/autolog.js/main//autolog.svg" width="300">
+  <img alt="autotoast" src="https://raw.githubusercontent.com/Larryzhu-dev/autotoast.js/main//autotoast.svg" width="300">
   </a>
 </p>
 
 <p align="center">
-  <h2 align="center">autolog.js</h2>
+  <h2 align="center">autotoast.js</h2>
 </p>
 
 一个轻量化小弹窗，无需任何依赖，一行代码即可弹出，并自动管理状态。
@@ -13,30 +13,30 @@
 ## 安装
 
 ```shell
-pnpm i autolog.js
+pnpm i autotoast.js
 ```
 
 ## 使用
 
 ```js
-import autolog from "autolog.js";
+import autotoast from "autotoast.js";
 
-autolog.log("Hello World", "success", 2500);
+autotoast.log("Hello World", "success", 2500);
 // 其中 "success" 和 2500 都是可选项
 ```
 
 ## 自定义 icon
 
-支持 svg 字符串，iconfont 类名，通过 createAutolog 方法创建自定义实例。
+支持 svg 字符串，iconfont 类名，通过 createautotoast 方法创建自定义实例。
 
-自定义 icon 时，autolog 将优先使用你的自定义 icon，也就是说，你可以通过覆盖默认 icon 来修改预设图标。
+自定义 icon 时，autotoast 将优先使用你的自定义 icon，也就是说，你可以通过覆盖默认 icon 来修改预设图标。
 
-autolog 在创建弹窗元素时，会将 自定义 icon 的 key 作为 class 添加到 span 元素上，你可以通过 css 来自定义样式。如 `autolog-customSvg` 或 `autolog-iconfont`。
+autotoast 在创建弹窗元素时，会将 自定义 icon 的 key 作为 class 添加到 span 元素上，你可以通过 css 来自定义样式。如 `autotoast-customSvg` 或 `autotoast-iconfont`。
 
 
 ```js
-import { createAutolog } from "autolog.js";
-const autolog = createAutolog({
+import { createautotoast } from "autotoast.js";
+const autotoast = createautotoast({
  svgIcons: {
      customSvg: `<svg>...</svg>`,
      iconfont: "icon-xxx"
@@ -46,13 +46,13 @@ const autolog = createAutolog({
 
 ## 自定义样式
 
-autolog.js 提供了最简单的 css 和 预设图标，你可以通过覆盖默认样式来自定义弹窗样式。
+autotoast.js 提供了最简单的 css 和 预设图标，你可以通过覆盖默认样式来自定义弹窗样式。
 
 
 这是全部的默认样式：
 
 ```css
-#autolog {
+#autotoast {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,7 +68,7 @@ autolog.js 提供了最简单的 css 和 预设图标，你可以通过覆盖默
   transition: 0.2s;
 }
 
-#autolog > span {
+#autotoast > span {
   pointer-events: auto;
   width: max-content;
   animation: fadein 0.4s;
@@ -89,11 +89,11 @@ autolog.js 提供了最简单的 css 和 预设图标，你可以通过覆盖默
   background-color: #fafafa;
 }
 
-#autolog > span > span {
+#autotoast > span > span {
   max-width: 50vw;
 }
 
-#autolog span.hide {
+#autotoast span.hide {
   opacity: 0;
   pointer-events: none;
   transform: translateY(-10px);
@@ -102,27 +102,27 @@ autolog.js 提供了最简单的 css 和 预设图标，你可以通过覆盖默
   margin: 0;
 }
 
-#autolog > .autolog-warn {
+#autotoast > .autotoast-warn {
   background-color: #fffaec;
   color: #e29505;
 }
 
-#autolog > .autolog-error {
+#autotoast > .autotoast-error {
   background-color: #fde7e7;
   color: #d93025;
 }
 
-#autolog > .autolog-info {
+#autotoast > .autotoast-info {
   background-color: #e6f7ff;
   color: #0e6eb8;
 }
 
-#autolog > .autolog-success {
+#autotoast > .autotoast-success {
   background-color: #e9f7e7;
   color: #1a9e2c;
 }
 
-#autolog > .autolog- {
+#autotoast > .autotoast- {
   background-color: #fafafa;
   color: #333;
 }
