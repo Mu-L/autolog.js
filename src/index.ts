@@ -17,7 +17,7 @@ interface autotoastOptions<T extends Record<string, string>> {
   autoClose?: boolean;
 }
 const autotoast = {
-  log<T extends typeof svgIcons>(text = "", type: autotoastLogType<T> | number | boolean = "", time: number | boolean = 2500, autoClose = true) {
+  show<T extends typeof svgIcons>(text = "", type: autotoastLogType<T> | number | boolean = "", time: number | boolean = 2500, autoClose = true) {
     if (typeof type === "number") {
       autoClose = time as unknown as boolean; // interpret time as autoClose
       time = type;
@@ -68,7 +68,7 @@ const autotoast = {
 function create<T extends Record<string, string>>(options: autotoastOptions<T>) {
   customIcons(options.svgIcons);
   return {
-    log: autotoast.log.bind(autotoast) as <U extends autotoastLogType<T>>(text?: string, type?: U | number | boolean, time?: number | boolean, autoClose?: boolean) => void,
+    show: autotoast.show.bind(autotoast) as <U extends autotoastLogType<T>>(text?: string, type?: U | number | boolean, time?: number | boolean, autoClose?: boolean) => void,
   };
 }
 // 定义颜色对象的类型
