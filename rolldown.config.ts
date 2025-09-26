@@ -45,6 +45,6 @@ export default defineConfig({
     },
   ],
   plugins: [
-    banner(() => bannerContent),
+    banner(() => bannerContent) as Plugin,
   ]
 })
