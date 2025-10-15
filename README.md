@@ -1,6 +1,6 @@
 <p align="center">
   <a target="_blank" href="#">
-  <img alt="autotoast" src="https://raw.githubusercontent.com/Larryzhu-dev/autotoast.js/main//autotoast.svg" width="300">
+  <img alt="autotoast" src="./autotoast.svg" width="300">
   </a>
 </p>
 
